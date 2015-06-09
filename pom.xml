@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cz.i24</groupId>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
 
-	<version>1-SNAPSHOT</version>
+	<version>1</version>
 
 	<name>i24: Parent POM</name>
 	<description>Master maven parent POM for LGPL i24 projects</description>
@@ -894,9 +893,9 @@
 	</profiles>
 
 	<scm>
-		<connection>scm:svn:https://github.com/karumien/i24/trunk</connection>
-		<developerConnection>scm:svn:https://github.com/karumien/i24/trunk</developerConnection>
-		<url>https://github.com/karumien/i24/trunk</url>
+		<connection>scm:svn:https://github.com/karumien/i24/tags/parent-1</connection>
+		<developerConnection>scm:svn:https://github.com/karumien/i24/tags/parent-1</developerConnection>
+		<url>https://github.com/karumien/i24/tags/parent-1</url>
 	</scm>
 
 </project>
