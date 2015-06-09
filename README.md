@@ -1,2 +1,2 @@
 # i24
-i24 projects LGLP 
+Maven parent POM project for i24 projects LGLP. 
