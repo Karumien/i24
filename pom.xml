@@ -1,13 +1,902 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
-  <groupId>cz.i24</groupId>
-  <artifactId>parent</artifactId>
-  <packaging>pom</packaging>
-  
-  <version>1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <name>i24: Parent POM</name>
-  <description>Master maven parent POM for LGPL i24 projects</description>
+	<groupId>cz.i24</groupId>
+	<artifactId>parent</artifactId>
+	<packaging>pom</packaging>
+
+	<version>1-SNAPSHOT</version>
+
+	<name>i24: Parent POM</name>
+	<description>Master maven parent POM for LGPL i24 projects</description>
+
+	<organization>
+		<name>Karumien s.r.o.</name>
+		<url>http://www.karumien.com</url>
+	</organization>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/Karumien/i24/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>Jenkins CI</system>
+		<url>http://ci.karumien.com</url>
+	</ciManagement>
+
+	<developers>
+		<developer>
+			<id>miroslav.svoboda</id>
+			<name>Miroslav Svoboda</name>
+			<roles>
+				<role>Senior Solutions Architect</role>
+			</roles>
+			<email>miroslav.svoboda@karumien.com</email>
+			<organization>Karumien s.r.o.</organization>
+			<url>http://www.karumien.com</url>		
+		</developer>
+	</developers>
+
+	<inceptionYear>2014</inceptionYear>
+
+	<properties>
+		<java-version>1.7</java-version>
+		<sonar-version>5.1</sonar-version>
+		<downloadSources>false</downloadSources>
+		<downloadJavadocs>false</downloadJavadocs>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<ojdbc6-version>11.2.0.4</ojdbc6-version>
+		<hsqldb-version>2.3.2</hsqldb-version>
+
+		<slf4j-version>1.7.12</slf4j-version>
+		<log4j-version>1.2.17</log4j-version>
+		<jboss-logging>3.1.4.GA</jboss-logging>
+
+		<apache-cxf-version>2.7.12</apache-cxf-version>
+		<lombok-version>1.16.4</lombok-version>
+
+		<aspectj-version>1.8.5</aspectj-version>
+
+		<google-guava-version>18.0</google-guava-version>
+
+		<commons-io-version>2.4</commons-io-version>
+		<commons-dbcp-version>1.4</commons-dbcp-version>
+		<commons-lang3-version>3.4</commons-lang3-version>
+		<commons-httpclient-version>3.1</commons-httpclient-version>
+		<commons-fileupload-version>1.3</commons-fileupload-version>
+		<commons-beanutils-version>1.9.2</commons-beanutils-version>
+		<commons-csv-version>1.0</commons-csv-version>
+
+		<spring-framework-version>4.1.6.RELEASE</spring-framework-version>
+		<spring-security-version>4.0.1.RELEASE</spring-security-version>
+		<spring-data-version>1.7.1.RELEASE</spring-data-version>
+		<spring-data-solr-version>1.4.0.RELEASE</spring-data-solr-version>
+		<spring-data-envers-version>0.2.0.RELEASE
+		</spring-data-envers-version>
+
+		<spring-framework-ws-version>2.2.1.RELEASE</spring-framework-ws-version>
+		<hibernate-version>4.3.9.Final</hibernate-version>
+		<javassist-version>3.19.0-GA</javassist-version>
+
+		<spring-webflow-version>2.4.1.RELEASE</spring-webflow-version>
+		<jackson-version>2.5.0</jackson-version>
+
+		<mojarra-version>2.2.8-02</mojarra-version>
+
+		<primefaces-version>5.1</primefaces-version>
+		<primefaces-themes-version>1.0.10</primefaces-themes-version>
+		<primefaces-extension-version>3.0.0</primefaces-extension-version>
+
+		<servlet-api-version>3.0.1</servlet-api-version>
+		<servlet-jsp-api-version>2.2</servlet-jsp-api-version>
+		<servlet-jstl-version>1.2</servlet-jstl-version>
+
+		<ehcache-version>2.6.10</ehcache-version>
+		<ehcache-web-version>2.0.4</ehcache-web-version>
+		<dozer-version>5.5.1</dozer-version>
+		<orika-version>1.4.5</orika-version>
+
+		<jmeter-maven-plugin-version>1.10.0</jmeter-maven-plugin-version>
+
+		<jta-version>1.1</jta-version>
+
+		<google-gdata-version>1.47.1</google-gdata-version>
+
+		<hamcrest-version>1.3</hamcrest-version>
+		<mockito-version>1.9.5</mockito-version>
+		<testng-version>6.8.21</testng-version>
+
+		<productionMode>false</productionMode>
+		<vaadin-version>7.4.6</vaadin-version>
+		<vaadin-spring-version>1.0.0.beta3</vaadin-spring-version>
+		<vaadin-testbench-version>4.0.0.rc1</vaadin-testbench-version>
+
+		<jasper-reports-version>6.0.4</jasper-reports-version>
+	</properties>
+
+	<repositories>
+
+		<!-- Karumien repository for developers -->
+		<repository>
+			<id>com.karumien</id>
+			<name>ATOS Maven Repository</name>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<!-- For testing against latest Spring snapshots -->
+		<repository>
+			<id>org.springframework.maven.snapshot</id>
+			<name>Spring Maven Snapshot Repository</name>
+			<url>http://maven.springframework.org/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+
+
+		<!-- For developing against latest Spring milestones -->
+		<repository>
+			<id>spring</id>
+			<name>Spring Repository</name>
+			<url>http://repo.spring.io/milestone</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+
+		<!-- For developing JasperReports -->
+		<repository>
+			<id>jasper</id>
+			<name>JasperSoft Repository</name>
+			<url>http://jasperreports.sourceforge.net/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jasper.3rd</id>
+			<name>JasperSoft 3rd Repository</name>
+			<url>http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+
+		<!-- For Hibernate Validator -->
+		<repository>
+			<id>org.jboss.repository.releases</id>
+			<name>JBoss Maven Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases
+			</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<!-- For Sun Mojarra JSF 2 implementation -->
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<!-- For PrimeFaces JSF component library -->
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+
+		<!-- Vaadin -->
+		<repository>
+			<id>vaadin-addons</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype vaadin</id>
+			<url>https://oss.sonatype.org/content/repositories/vaadin/</url>
+		</repository>
+
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- JAsper reports -->
+			<dependency>
+				<groupId>net.sf.jasperreports</groupId>
+				<artifactId>jasperreports</artifactId>
+				<version>${jasper-reports-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.lowagie</groupId>
+				<artifactId>itext</artifactId>
+				<version>2.1.7.js2</version>
+				<scope>compile</scope>
+				<exclusions>
+					<exclusion>
+						<artifactId>bcmail-jdk14</artifactId>
+						<groupId>bouncycastle</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>bcprov-jdk14</artifactId>
+						<groupId>bouncycastle</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>bctsp-jdk14</artifactId>
+						<groupId>org.bouncycastle</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>commons-collections</artifactId>
+						<groupId>commons-collections</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>commons-collections</artifactId>
+						<groupId>commons-collections</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jackson-annotations</artifactId>
+						<groupId>com.fasterxml.jackson.core</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>3.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+
+			<!-- Lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok-version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${google-guava-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist-version}</version>
+			</dependency>
+
+
+			<!-- Dozer -->
+			<dependency>
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer</artifactId>
+				<version>${dozer-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ma.glasnost.orika</groupId>
+				<artifactId>orika-core</artifactId>
+				<version>${orika-version}</version>
+			</dependency>
+
+			<!-- HSQL DB -->
+			<dependency>
+				<groupId>org.hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>${hsqldb-version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc6</artifactId>
+				<version>${ojdbc6-version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Hibernate & Envers -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-envers</artifactId>
+				<version>${spring-data-envers-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-envers</artifactId>
+				<version>${hibernate-version}</version>
+				<!-- exclusions> <exclusion> <artifactId>jboss-transaction-api_1.2_spec</artifactId> 
+					<groupId>org.jboss.spec.javax.transaction</groupId> </exclusion> </exclusions -->
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.spec.javax.transaction</groupId>
+				<artifactId>jboss-transaction-api_1.2_spec</artifactId>
+				<version>1.0.0.Final</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-jpamodelgen</artifactId>
+				<version>${hibernate-version}</version>
+				<scope>compile</scope>
+				<optional>true</optional>
+			</dependency>
+
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring-data-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-solr</artifactId>
+				<version>${spring-data-solr-version}</version>
+			</dependency>
+
+
+			<!-- Spring web -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-taglibs</artifactId>
+				<version>${spring-security-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring-security-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring-security-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.ws</groupId>
+				<artifactId>spring-ws-core</artifactId>
+				<version>${spring-framework-ws-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring-framework-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>${jta-version}</version>
+			</dependency>
+
+			<!-- Logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j-version}</version>
+			</dependency>
+			<!-- dependency> <groupId>org.jboss.logging</groupId> <artifactId>jboss-logging</artifactId> 
+				<version>${jboss-logging}</version> </dependency -->
+
+			<!-- Faces -->
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-faces</artifactId>
+				<version>${spring-webflow-version}</version>
+			</dependency>
+
+			<!-- Sun Mojarra JSF 2 runtime -->
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-api</artifactId>
+				<version>${mojarra-version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-impl</artifactId>
+				<version>${mojarra-version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet-api-version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${servlet-jsp-api-version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${servlet-jstl-version}</version>
+			</dependency>
+
+			<!-- Commons and File upload dependencies -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-csv</artifactId>
+				<version>${commons-csv-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${commons-beanutils-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>${commons-httpclient-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3-version}</version>
+			</dependency>
+
+			<!-- PrimeFaces -->
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>${primefaces-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.primefaces.extensions</groupId>
+				<artifactId>primefaces-extensions</artifactId>
+				<version>${primefaces-extension-version}</version>
+			</dependency>
+
+			<!-- Google -->
+			<dependency>
+				<groupId>com.google.gdata</groupId>
+				<artifactId>core</artifactId>
+				<version>${google-gdata-version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>google-oauth-client-jetty</artifactId>
+						<groupId>com.google.oauth-client</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- Vaadin -->
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-server</artifactId>
+				<version>${vaadin-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-themes</artifactId>
+				<version>${vaadin-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-client-compiler</artifactId>
+				<version>${vaadin-version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-spring</artifactId>
+				<version>${vaadin-spring-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-testbench</artifactId>
+				<version>${vaadin-testbench-version}</version>
+				<scope>test</scope>
+			</dependency>
+
+
+			<!-- Cache -->
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>${ehcache-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-web</artifactId>
+				<version>${ehcache-web-version}</version>
+			</dependency>
+
+			<!-- Tests -->
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${hamcrest-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring-framework-version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- AOP -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectj-version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+
+		<!-- i24 repository -->
+		<repository>
+			<id>cz.i24</id>
+			<name>i24 OSS Sonatype Snapshots</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+
+		<!-- i24 snapshots -->
+		<snapshotRepository>
+			<id>cz.i24</id>
+			<name>i24 OSS Sonatype Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+
+	</distributionManagement>
+
+
+	<build>
+		<plugins>
+			<!-- plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+				<version>2.10.2</version> <executions> <execution> <id>attach-javadocs</id> 
+				<goals> <goal>jar</goal> </goals> <configuration> <additionalparam>-Xdoclint:none</additionalparam> 
+				</configuration> </execution> </executions> </plugin -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<compilerVersion>${java-version}</compilerVersion>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!-- plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
+				<version>2.17</version> <configuration> <argLine>-Xms256m -Xmx512m -XX:MaxPermSize=128m</argLine> 
+				</configuration> </plugin -->
+
+			<plugin>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
+				<version>${lombok-version}.0</version>
+				<!-- dependencies> <dependency> <groupId>sun.jdk</groupId> <artifactId>tools</artifactId> 
+					<version>${java-version}</version> <scope>system</scope> <systemPath>${java.home}/../lib/tools.jar</systemPath> 
+					</dependency> </dependencies> <configuration> <addOutputDirectory>false</addOutputDirectory> 
+					<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory> </configuration> 
+					<executions> <execution> <phase>verify</phase> <goals> <goal>delombok</goal> 
+					</goals> </execution> </executions -->
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true
+							</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Weblogic-Application-Version>${project-version}
+							</Weblogic-Application-Version>
+							<Specification-Title>${project.name}</Specification-Title>
+							<Specification-Version>1.0</Specification-Version>
+							<Build-Number>${buildNumber}</Build-Number>
+							<Built-Time>${maven.build.timestamp}</Built-Time>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true
+							</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Weblogic-Application-Version>${project-version}
+							</Weblogic-Application-Version>
+							<Specification-Title>${project.name}</Specification-Title>
+							<Specification-Version>1.0</Specification-Version>
+							<Build-Number>${buildNumber}</Build-Number>
+							<Built-Time>${maven.build.timestamp}</Built-Time>
+						</manifestEntries>
+					</archive>
+					<webResources>
+						<webResource>
+							<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+							<includes>
+								<include>*.xml</include>
+							</includes>
+							<targetPath>WEB-INF</targetPath>
+							<filtering>true</filtering>
+						</webResource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.sonar</groupId>
+					<artifactId>sonar-maven3-plugin</artifactId>
+					<version>${sonar-version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.vaadin</groupId>
+										<artifactId>
+											vaadin-maven-plugin
+										</artifactId>
+										<versionRange>
+											[7.1.0,)
+										</versionRange>
+										<goals>
+											<goal>resources</goal>
+											<goal>
+												update-widgetset
+											</goal>
+											<goal>update-theme</goal>
+											<!--goal>compile-theme</goal -->
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>production-mode</id>
+			<properties>
+				<productionMode>true</productionMode>
+			</properties>
+			<activation>
+				<property>
+					<name>productionMode</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.vaadin</groupId>
+						<artifactId>vaadin-maven-plugin</artifactId>
+						<version>${vaadin-version}</version>
+						<executions>
+							<execution>
+								<configuration>
+								</configuration>
+								<goals>
+									<goal>resources</goal>
+									<goal>update-widgetset</goal>
+									<goal>compile</goal>
+									<!-- goal>compile-theme</goal -->
+									<goal>update-theme</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.12</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+
+			</build>
+		</profile>
+	</profiles>
+
+	<scm>
+		<connection>scm:svn:https://github.com/karumien/i24/trunk</connection>
+		<developerConnection>scm:svn:https://github.com/karumien/i24/trunk</developerConnection>
+		<url>https://github.com/karumien/i24/trunk</url>
+	</scm>
 
 </project>
