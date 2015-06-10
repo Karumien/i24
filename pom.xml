@@ -5,7 +5,7 @@
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
 
-	<version>2</version>
+	<version>3-SNAPSHOT</version>
 
 	<name>i24: Parent POM</name>
 	<description>Master maven parent POM for i24 projects</description>
@@ -928,9 +928,9 @@
 	</profiles>
 
 	<scm>
-		<connection>scm:svn:https://github.com/karumien/i24/tags/parent-2</connection>
-		<developerConnection>scm:svn:https://github.com/karumien/i24/tags/parent-2</developerConnection>
-		<url>https://github.com/karumien/i24/tags/parent-2</url>
+		<connection>scm:svn:https://github.com/karumien/i24/trunk</connection>
+		<developerConnection>scm:svn:https://github.com/karumien/i24/trunk</developerConnection>
+		<url>https://github.com/karumien/i24/trunk</url>
 	</scm>
 
 </project>
