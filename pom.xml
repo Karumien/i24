@@ -8,7 +8,15 @@
 	<version>2-SNAPSHOT</version>
 
 	<name>i24: Parent POM</name>
-	<description>Master maven parent POM for LGPL i24 projects</description>
+	<description>Master maven parent POM for i24 projects</description>
+	<url>http://www.i24.cz</url>
+
+	<licenses>
+	  <license>
+	    <name>The Apache License, Version 2.0</name>
+	    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	  </license>
+	</licenses>
 
 	<organization>
 		<name>Karumien s.r.o.</name>
