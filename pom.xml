@@ -129,7 +129,7 @@
 		<!-- Karumien repository for developers -->
 		<repository>
 			<id>com.karumien</id>
-			<name>ATOS Maven Repository</name>
+			<name>OSS Maven Repository</name>
 			<url>https://oss.sonatype.org/content/groups/public/</url>
 			<releases>
 				<enabled>true</enabled>
